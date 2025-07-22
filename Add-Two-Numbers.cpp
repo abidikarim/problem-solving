@@ -30,14 +30,13 @@ public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         string s1="",s2="";
         while(l1){
-            s1+=to_string(l1->val);
+            s1+=l1->val + '0';
             l1=l1->next;
         }
         while(l2){
-            s2+=to_string(l2->val);
+            s2+=l2->val + '0';
             l2=l2->next;
         }
-        cout<<s1<<" not reverse "<<s2<<"\n";
         reverse(s1.begin(),s1.end());
         reverse(s2.begin(),s2.end());
         string s = addStrings(s1,s2);
