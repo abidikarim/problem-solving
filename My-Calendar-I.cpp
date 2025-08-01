@@ -6,10 +6,22 @@ public:
     }
     
     bool book(int startTime, int endTime) {
-        for(auto p:st){
-          if (!(endTime <= p.first || startTime >= p.second)) {
-                // overlap exists
+        // for(auto p:st){
+        //   if (!(endTime <= p.first || startTime >= p.second)) {
+        //         // overlap exists
+        //         return false;
+        //     }
+        // }
+        // st.insert({startTime,endTime});
+        // return true;
+        if(!st.empty()){
+            auto it = st.lower_bound({startTime,0});
+            if(it != st.end() && it->first < endTime)
                 return false;
+            if(it != st.begin()){
+                auto p= prev(it);
+                if(p->second > startTime)
+                    return false;
             }
         }
         st.insert({startTime,endTime});
