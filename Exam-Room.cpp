@@ -34,7 +34,7 @@ public:
     }
     
     void leave(int p) {
-       seats.erase(seats.find(p));
+       seats.erase(p);
     }
 };
 
