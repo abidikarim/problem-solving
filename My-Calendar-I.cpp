@@ -14,18 +14,19 @@ public:
         // }
         // st.insert({startTime,endTime});
         // return true;
-        if(!st.empty()){
-            auto it = st.lower_bound({startTime,0});
-            if(it != st.end() && it->first < endTime)
+       if(!st.empty()) {
+          auto it = st.lower_bound({startTime,0});
+          if(it != st.end() && it->first < endTime)
                 return false;
-            if(it != st.begin()){
-                auto p= prev(it);
-                if(p->second > startTime)
-                    return false;
-            }
-        }
+          if(it != st.begin()){
+             auto p= prev(it);
+             if(p->second > startTime)
+                return false;
+          }
+        
+       }
         st.insert({startTime,endTime});
-        return true;
+          return true;
     }
 };
 
