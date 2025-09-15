@@ -1,25 +1,24 @@
 class Solution {
 public:
-    bool dfs(int p, vector<vector<int>> &g, int &y, vector<bool>& vis){
-        vis[p]=1;
-        if(p ==y) return true;
-        bool found= false;
-        for(auto c:g[p]){
-            if(!vis[c])
-                found |= dfs(c,g,y,vis);
+    bool dfs(int node, vector<vector<int>>&graph, int dest, vector<bool>& vis){
+        vis[node] = 1;
+        if(node == dest)
+            return 1;
+        bool found = 0;
+        for(auto child:graph[node]){
+            if(!vis[child]){
+                found |= dfs(child, graph, dest, vis);
+            }
         }
         return found;
     }
     bool validPath(int n, vector<vector<int>>& e, int s, int d) {
-        vector<vector<int>> graph(n);
-        vector<bool>vis(n, 0);
-
-        for(int i=0; i<e.size(); i++){
-            int x= e[i][0];
-            int y= e[i][1];
-            graph[x].push_back(y);
-            graph[y].push_back(x);
-        }
-        return dfs(s,graph,d,vis);
+       vector<vector<int>> graph(n);
+       vector<bool> vis(n, 0);
+       for(auto x:e){
+            graph[x[0]].push_back(x[1]);
+            graph[x[1]].push_back(x[0]);
+       }
+       return dfs(s,graph,d,vis);
     }
 };
