@@ -12,16 +12,16 @@
 class Solution {
 public:
     vector<int>ans;
-    void dfs(TreeNode* root){
+    void preorder(TreeNode* root){ // root -> left -> right
         if(!root)
             return ;
         ans.push_back(root->val);
-        dfs(root->left);
-        dfs(root->right);
+        preorder(root->left);
+        preorder(root->right);
         
     }
     vector<int> preorderTraversal(TreeNode* root) {
-        dfs(root);
+        preorder(root);
         return ans;
     }
 };
