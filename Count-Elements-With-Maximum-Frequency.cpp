@@ -8,7 +8,6 @@ public:
         multiset<int, greater<int>>st;
 
         for(auto [key, val]:mp){
-            cout<<key<<"  "<<val<<endl;
             st.insert(val);
         }
 
