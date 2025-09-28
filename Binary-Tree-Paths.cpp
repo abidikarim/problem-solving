@@ -12,20 +12,19 @@
 class Solution {
 public:
     vector<string> binaryTreePaths(TreeNode* root) {
-        string val = to_string(root->val);
-        if(!root->left && !root->right){
-            return {val};
+        if(!root){
+            return {};
         }
-        
-        vector<string>ans;
+       if(!root->left && !root->right){
+            return {to_string(root->val)};
+       }
+       vector<string>ans;
 
-        for(auto &child:{root->right, root->left}){
-            if(child){
-                for(string &path:binaryTreePaths(child)){
-                    ans.push_back(val + "->" + path);
-                }
-            }
-        }
-        return ans;
+       for(auto child:{root->left, root->right}){
+            for(string &path:binaryTreePaths(child)){
+            ans.push_back(to_string(root->val)+ "->"+ path);
+          }
+       }
+       return ans;
     }
 };
