@@ -12,18 +12,17 @@
 class Solution {
 public:
     vector<string> getBinaryCodes(TreeNode* root){
-        if(!root) return {};
         if(!root->left && !root->right){
             return {to_string(root->val)};
         }
         vector<string>codes;
         for(auto child:{root->left, root->right}){
-            for(string &s:getBinaryCodes(child)){
-                if(child){
+            if(child){
+                for(string &s:getBinaryCodes(child)){
                     codes.push_back(to_string(root->val)+s);
-                }
             }
         }
+    }
         return codes;
     }
     int sumRootToLeaf(TreeNode* root) {
