@@ -9,11 +9,7 @@ public:
     void push(int val) {
         st.push(val);
         if(!mn.empty()){
-            if(mn.top() > val){
-                mn.push(val);
-            }else {
-                mn.push(mn.top());
-            }
+           mn.push(min(mn.top(), val));
         }else {
             mn.push(val);
         }
