@@ -1,18 +1,14 @@
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        map<int,int>mp;
-        for(int x:nums){
-            mp[x]++;
+        int i=0, j=0;
+
+        while(i < nums.size()){
+            if(nums[i] != val){
+                nums[j++] = nums[i];
+            }
+            i++;
         }
-        if(mp.count(val)){
-            mp.erase(val);
-        }
-        nums.clear();
-        for(auto[key,value]:mp){
-            for(int i=0;i<value; i++)
-                nums.push_back(key);
-        }
-        return nums.size();
+        return j;
     }
 };
