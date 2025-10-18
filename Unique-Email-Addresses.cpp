@@ -2,7 +2,7 @@ class Solution {
 public:
     int numUniqueEmails(vector<string>& emails) {
         int n = emails.size();
-        set<string>v;
+        set<string>st;
         for(string email:emails){
             int p = email.find('@');
             string domain = email.substr(p);
@@ -14,9 +14,9 @@ public:
                 local.erase(remove(local.begin(), local.end(),'.'), local.end());
             }
         
-            v.insert(local+domain);
+            st.insert(local+domain);
                 
         }
-        return v.size();
+        return st.size();
     }
 };
