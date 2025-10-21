@@ -3,9 +3,13 @@ public:
     vector<string> findRepeatedDnaSequences(string s) {
         if (s.size() < 10) return {};
         unordered_map<string, int>mp;
-        for(int i=0; i <= s.size()-10; i++){
-            string current = s.substr(i,10);
-            mp[current]++;
+        string current;
+        for(int i=0; i < s.size(); i++){
+            current += s[i];
+            if(current.size() == 10){
+                mp[current]++;
+                current = current.substr(1);
+            }
         }
         vector<string>v;
         for(auto [key, val]:mp){
