@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string handleString(string s){
+    stack<char> handleString(string s){
         stack<char>st;
         for(int i=0; i<s.size(); i++){
             if(s[i] == '#' && !st.empty()){
@@ -9,12 +9,7 @@ public:
                 st.push(s[i]);
             }
         }
-        string ans="";
-        while(!st.empty()){
-            ans.push_back(st.top());
-            st.pop();
-        }
-        return ans;
+        return st;
     }
     bool backspaceCompare(string s, string t) {
         return handleString(s) == handleString(t);
