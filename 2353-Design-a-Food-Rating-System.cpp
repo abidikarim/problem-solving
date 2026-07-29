@@ -3,8 +3,8 @@ public:
     struct Compare {
         bool operator()(const pair<int, string>& a, const pair<int, string>& b) const {
             if(a.first != b.first)
-                return a.first < b.first;
-            return a.second > b.second;
+                return a.first > b.first;
+            return a.second < b.second;
         }
     };
     map<string, int>food_rate;
@@ -27,7 +27,7 @@ public:
     }
     
     string highestRated(string cuisine) {
-        return food_rate_per_cuisine[cuisine].rbegin()->second;
+        return food_rate_per_cuisine[cuisine].begin()->second;
     }
 };
 
