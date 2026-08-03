@@ -1,6 +1,6 @@
 class TaskManager {
 public:
-    map<int, pair<int, int>>task_info;
+    unordered_map<int, pair<int, int>>task_info;
     set<pair<int, int>>task_priority;
     TaskManager(vector<vector<int>>& tasks) {
        for(auto &t:tasks){
