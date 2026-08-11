@@ -1,20 +1,20 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        set<int>st;
+        int n = nums.size();
+        vector<int>seen(n+1, 0);
 
-        for(int& x:nums){
-            if(x > 0)
-                st.insert(x);
+        for(int& num:nums){
+            if(num > 0 && num <= n)
+                seen[num] = 1;
         }
 
-        int ans = 1;
-        auto it = st.begin();
-        while(it != st.end() && *it == ans){
-            it++;
-            ans++;
+        for(int i = 1; i<=n; i++){
+            if(!seen[i])
+                return i;
         }
-        return ans;
+
+        return n+1;
         
     }
 };
