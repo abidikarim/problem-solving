@@ -1,25 +1,20 @@
 class Solution {
 public:
-    void dfs(vector<vector<int>>& graph, vector<bool>& vis, int node){
-        vis[node] = 1;
-        for(auto &child:graph[node]){
+    void dfs(vector<vector<int>>& graph,vector<bool>& vis, int source){
+        vis[source] = true;
+
+        for(auto& child:graph[source]){
             if(!vis[child])
                 dfs(graph, vis, child);
         }
-
     }
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
-        vector<vector<int>>graph(n);
         vector<bool>vis(n, 0);
-
-        for(int i=0; i<edges.size(); i++){
-            int x = edges[i][0];
-            int y = edges[i][1];
-
-            graph[x].push_back(y);
-            graph[y].push_back(x);
+        vector<vector<int>>graph(n);
+        for(auto edge:edges){
+            graph[edge[0]].push_back(edge[1]);
+            graph[edge[1]].push_back(edge[0]);
         }
-
         dfs(graph, vis, source);
         return vis[destination];
     }
