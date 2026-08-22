@@ -9,12 +9,10 @@ class Solution(object):
         if not root:
             return True
 
-        if root.left:
-            if root.val != root.left.val:
+        if root.left and root.val != root.left.val:
                 return False
 
-        if root.right:
-            if root.val != root.right.val:
+        if root.right and root.val != root.right.val:
                 return False
 
         return self.isUnivalTree(root.left) and self.isUnivalTree(root.right)        
